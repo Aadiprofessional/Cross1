@@ -6,5 +6,6 @@ export const colors = {
     buttonBackground: '#FCCC51',
     main: '#FCCC51',
     textPrimary: '#000',
+    primary:'#FFE8C4',
   };
   

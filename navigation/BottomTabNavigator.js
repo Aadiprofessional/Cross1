@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from '../screens/HomeScreen';
@@ -33,20 +34,51 @@ const BottomTabNavigator = () => {
 
           return <Icon name={iconName} size={size} color={iconColor} />;
         },
+        tabBarLabel: ({ focused, color }) => {
+          let label;
+
+          if (route.name === 'Home') {
+            label = 'Home';
+          } else if (route.name === 'Quotes') {
+            label = 'Quotes';
+          } else if (route.name === 'Cart') {
+            label = 'Cart';
+          } else if (route.name === 'Profile') {
+            label = 'Profile';
+          }
+
+          return (
+            <Text style={{ color, fontSize: 12, textAlign: 'center' }}>
+              {label}
+            </Text>
+          );
+        },
+        tabBarActiveTintColor: '#FCCC51',
+        tabBarInactiveTintColor: 'gray',
+        tabBarShowLabel: true, // Show labels
       })}
       tabBarOptions={{
-        activeTintColor: '#FCCC51', // Color when tab is active
-        inactiveTintColor: 'gray', // Color when tab is inactive
-        showLabel: false, // Hide labels from bottom tabs
         style: {
           display: 'flex', // Fix for deprecated tabBarStyle
         },
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Quotes" component={QuotesScreen} />
-      <Tab.Screen name="Cart" component={CartScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen 
+        name="Home" 
+        component={HomeScreen} 
+      />
+      <Tab.Screen 
+        name="Quotes" 
+        component={QuotesScreen} 
+      />
+      <Tab.Screen 
+        name="Cart" 
+        component={CartScreen} 
+      />
+      <Tab.Screen 
+        name="Profile" 
+        component={ProfileScreen} 
+      />
     </Tab.Navigator>
   );
 };
